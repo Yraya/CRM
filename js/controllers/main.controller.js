@@ -4,34 +4,38 @@
     angular.module('app_name')
         .controller('AlumnController', alumnController);
 
-    function alumnController($scope, $localStorage,
-    $sessionStorage, $http) {
+    function alumnController($scope) {
         $scope.alumns = [];
-        $scope.$storage = $localStorage;
-        
+
         $scope.addAlumn = addAlumn;
         $scope.resetForm = resetForm;
+        $scope.modify = modify;
 
         function addAlumn() {
             $scope.alumns.push($scope.newAlumn);
+            save();
             resetForm();
-            console.log($localStorage);
+        }
+
+        function save() {
+            localStorage.setItem("alumnsData", JSON.stringify($scope.alumns));
+        }
+
+        function load() {
+            $scope.alumns = JSON.parse(localStorage.getItem("alumnsData"));
         }
         
-        function save(){
-            $localStorage.alumnsData = $scope.alumns;
-        }
-        
-        function load(){
-            $scope.data = $localStorage.alumnsData;
-        }
 
         function resetForm() {
             $scope.newAlumn = {};
         }
 
-        
-    }
+        function init() {
+            if (localStorage.getItem("alumnsData")) {
+                load();
+            }
+        }
 
-    //$scope.newUser=amgular.copy(user);
+        init();
+    }
 })();

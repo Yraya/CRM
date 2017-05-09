@@ -70,6 +70,7 @@ body{
 .iconButton{
     border: none;
     background: none;
+    cursor: pointer;
 }
 
 .iconButton img{

@@ -21,7 +21,7 @@
     </div>
     <div id="mainContent">
         <div id="alumnsContainer">          
-            <div class="alumn" ng-repeat="alumn in alumns | filter : search">
+            <div class="alumn" ng-repeat="alumn in alumns | filter : search track by $index">
                 <div class="cover">
                      <img class="photo" src="{{alumn.photoUrl}}">
             
@@ -30,7 +30,7 @@
                 <p>{{alumn.phone}}</p>
                 <p>{{alumn.description}}</p>
                 <p>{{alumn.other}}</p>
-                <button class="iconButton"><img class="iconButton" src="images/edit-icon.svg"></button>
+                <button class="iconButton"><img class="iconButton" src="images/edit-icon.svg" ></button>
                 <button class="iconButton"><img class="iconButton" src="images/delete-icon.svg"></button>
             </div>
         </div>
