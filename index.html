@@ -42,31 +42,9 @@
             </p>
             <p>Description: <br><textarea rows="4" cols="30" ng-model="newAlumn.description" placeholder="Description" ng-required="true"></textarea></p>
             <p>Other (Optional): <br><textarea rows="4" cols="30" ng-model="newAlumn.other" placeholder="Other..."></textarea></p>
-            <button ng-click="$localstorage.alumns" type="submit">Add</button>
+            <button type="submit">Add</button>
             <button ng-click="resetForm()">Reset</button>
             
-            
-            <!--
-            <input type="number" 
-                   class="form-control" 
-                   ng-minlength="9" 
-                   ng-maxlength="9"  
-                   id="inputPhone" 
-                   name="phone" 
-                   placeholder="Phone" 
-                   ng-model="user.phone"
-                   ng-required="true">
-            <span class="help-block" 
-                  ng-show="registration.phone.$error.required || 
-                           registration.phone.$error.number">
-                           Valid phone number is required
-            </span>
-            <span class="help-block" 
-                  ng-show="((registration.phone.$error.minlength ||
-                           registration.phone.$error.maxlength) && 
-                           registration.phone.$dirty) ">
-                           phone number should be 9 digits
-            </span>-->
         </form>
     </div>
     <script src="js/app.js"></script>
