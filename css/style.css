@@ -1,0 +1,78 @@
+body{
+    font-size: 16px;
+}
+
+#mainContent{
+    display: flex;
+    align-items: stretch;
+}
+
+#title{
+   
+}
+
+#searchBar{
+    
+}
+
+#usersContainer, #formContainer{
+    
+}
+
+
+#alumnsContainer{
+    background-color: aliceblue;
+    display: flex;
+    align-items: stretch;
+    flex-wrap: wrap;
+    flex: 2;
+}
+
+#formContainer{
+    border: solid 1px lightgray;
+    border-radius: 5px;
+    padding: 10px;
+    flex: 1;
+}
+
+.alumn{
+    width: 240px;
+    height: 400px;
+    border: solid 1px aqua;
+    border-radius: 5px;
+    padding: 10px;
+    text-align: center;
+    margin: 10px;
+    background-color: floralwhite;
+    overflow: auto;
+}
+
+.photo{
+    width: 200px;
+    height: auto;
+    //border-radius: 300px;
+    //border-top-left-radius:  300px;
+    //border-top-right-radius:  300px;
+}
+
+.error-block{
+    color: red;
+}
+
+.cover {
+    width: 200px;
+    height: 200px;
+    margin: 20px;
+    overflow: hidden;
+    border-radius: 300px;
+}
+
+.iconButton{
+    border: none;
+    background: none;
+}
+
+.iconButton img{
+    width: 25px;
+    height: 25px;
+}
