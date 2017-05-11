@@ -84,3 +84,13 @@ h1{
     width: 25px;
     height: 25px;
 }
+
+/*Validation styles*/
+
+input.ng-invalid.ng-touched {
+    border-color: red;
+}
+
+input.ng-valid.ng-touched{
+    border-color: green;
+}
