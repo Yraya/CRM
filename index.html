@@ -9,19 +9,21 @@
 <body ng-controller="AlumnController">
     <div id="title"><h1>CRM</h1></div>
     <div id="searchBar" type="search">
-        <p>SEARCH:
+        <p ng-init="option='name'; search=''">SEARCH:
             <input ng-model="search" placeholder="Filter...">
-            By: <select>
+            
+            By: <select ng-model="option">
                 <option value="name">Name</option>
                 <option value="phone">Phone number</option>
                 <option value="description">Description</option>
-                <option value="name">Other</option>
+                <option value="other">Other</option>
             </select>
+
         </p>
     </div>
     <div id="mainContent">
         <div id="alumnsContainer">          
-            <div class="alumn" ng-repeat="alumn in alumns | filter : search track by $index">
+            <div class="alumn" ng-repeat="alumn in alumns | filter: myFilter track by alumn.id">
                 <div class="cover">
                      <img class="photo" src="{{alumn.photoUrl}}">
             
@@ -30,19 +32,20 @@
                 <p>{{alumn.phone}}</p>
                 <p>{{alumn.description}}</p>
                 <p>{{alumn.other}}</p>
-                <button class="iconButton"><img class="iconButton" src="images/edit-icon.svg" ></button>
-                <button class="iconButton"><img class="iconButton" src="images/delete-icon.svg"></button>
+                <button class="iconButton"><img class="iconButton" src="images/edit-icon.svg" ng-click="modify(alumn)"></button>
+                <button class="iconButton"><img class="iconButton" src="images/delete-icon.svg" ng-click="deleteAlumn(alumn)"></button>
             </div>
         </div>
 
-        <form id="formContainer" ng-submit="addAlumn()">
+        <form name="alumnForm" id="formContainer" novalidate>
             <p>Full name: <br><input ng-model="newAlumn.name" placeholder="Name" ng-required="true"></p>
             <p>Photo url: <br><input ng-model="newAlumn.photoUrl" placeholder="url" type="url" ng-required="true"></p>
             <p>Phone: <br><input ng-model="newAlumn.phone" placeholder="Phone (9 numeric digits)" type="tel" pattern="^[9|8|7|6][0-9]{8}" ng-required="true">
             </p>
             <p>Description: <br><textarea rows="4" cols="30" ng-model="newAlumn.description" placeholder="Description" ng-required="true"></textarea></p>
-            <p>Other (Optional): <br><textarea rows="4" cols="30" ng-model="newAlumn.other" placeholder="Other..."></textarea></p>
-            <button type="submit">Add</button>
+            <p>Other (Optional): <br><textarea class="optionalField" rows="4" cols="30" ng-model="newAlumn.other" placeholder="Other..."></textarea></p>
+            <button ng-hide="modifying" ng-click="addAlumn()">Add</button>
+            <button ng-show="modifying" ng-click="applyModification()">Modify</button>
             <button ng-click="resetForm()">Reset</button>
             
         </form>
